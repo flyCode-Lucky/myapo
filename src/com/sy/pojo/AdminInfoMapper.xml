@@ -2,7 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sy.dao.AdminDao">
+
 	<select id="login" resultType="com.sy.pojo.AdminInfo">
 		SELECT * from admininfo WHERE loginName = #{loginName} and password = #{password};
 	</select>
+	
+	<update id="updatePassword">
+		update admininfo set password=#{newPassword} where loginName=#{loginName} and password=#{password};
+	</update>
 </mapper>

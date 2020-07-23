@@ -15,4 +15,9 @@ public class AdminSI implements AdminS{
 	public AdminInfo login(String loginName,String password) {		
 		return dao.login(loginName, password);
 	}
+
+	public boolean updatePassword(String newPassword, String loginName, String password) {
+		
+		return dao.updatePassword(newPassword, loginName, password);
+	}
 }

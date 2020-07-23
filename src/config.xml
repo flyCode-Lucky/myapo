@@ -4,5 +4,7 @@
 <configuration>
 	<mappers>
 			<mapper resource="./com/sy/pojo/AdminInfoMapper.xml"/>
+			<mapper resource="./com/sy/pojo/OrdersMapper.xml"/>
+			
 	</mappers>
 </configuration>

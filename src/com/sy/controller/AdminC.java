@@ -4,9 +4,11 @@ import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sy.pojo.AdminInfo;
@@ -50,4 +52,23 @@ public class AdminC {
 		}
 		return "login";
 	}
+	
+	@RequestMapping("/updatePassword")
+	public String updatePassword(String newPassword,String loginName,String password,Model m) {
+			
+		if(ser.updatePassword(newPassword, loginName, password)) {
+			//修改成功,提示信息
+			JOptionPane.showMessageDialog(null, "密码修改成功，请去重新登陆！");			
+			return "login";//返回登陆页面
+			
+		}else {
+			//修改失败			
+			m.addAttribute("msg1", "修改密码失败，请重试！");
+			return "change-password";
+		}
+		
+		
+		
+	}
+	
 }
