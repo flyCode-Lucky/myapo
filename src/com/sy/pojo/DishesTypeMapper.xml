@@ -15,5 +15,9 @@
 		insert  into dishestype (typeName, status) values (#{typeName},1)
 	</insert>
 	
+	<delete id="delete">
+		delete from dishestype where id=#{id}
+	</delete>
+	
 
 </mapper>

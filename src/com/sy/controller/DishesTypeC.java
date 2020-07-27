@@ -14,7 +14,7 @@ import com.sy.service.DishesTypeS;
 
 @Controller
 @RequestMapping("/type")
-public class DishesC {
+public class DishesTypeC {
 
 	@Autowired
 	private DishesTypeS ser;
@@ -40,8 +40,11 @@ public class DishesC {
 	}
 	
 	@RequestMapping("/delete")
-	public String delete(int id) {
-		ser.delete(id);
+	public String delete(String ids) {
+		String sid[]=ids.split(",");
+		for(String id:sid){
+			ser.delete(Integer.parseInt(id));
+		}	
 		return "redirect:/type/findall";
 	}
 }

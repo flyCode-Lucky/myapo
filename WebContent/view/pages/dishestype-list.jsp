@@ -340,8 +340,9 @@
 				$(".ids:checkbox:checked").each(function(){					
 					ids+=$(this).val()+",";
 				});
-				alert(ids);
-				
+				//截取字符串，截取掉最后一个逗号
+				ids=ids.substring(0,ids.length-1);
+				window.location.href="${pageContext.request.contextPath}/type/delete?ids="+ids;
 				
 			});
 			
