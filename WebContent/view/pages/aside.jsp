@@ -28,7 +28,7 @@
 					<i class="fa fa-sticky-note-o"></i><span>菜品管理</span>
 			</a></li>
 			<li class="treeview"><a
-				href="${pageContext.request.contextPath}/DishesTypeServlet?method=dishesTypeList">
+				href="${pageContext.request.contextPath}/type/findall">
 					<i class="fa  fa-cubes"></i><span>菜品类别管理</span>
 				</a>
 			</li>

@@ -3,8 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<mappers>
-			<mapper resource="./com/sy/pojo/AdminInfoMapper.xml"/>
-			<mapper resource="./com/sy/pojo/OrdersMapper.xml"/>
-			
+			<mapper resource="./com/sy/pojo/AdminInfoMapper.xml"/>			
+			<mapper resource="./com/sy/pojo/DishesTypeMapper.xml"/>
 	</mappers>
 </configuration>

@@ -93,7 +93,7 @@
 
 			<!-- 正文区域 -->
 			<section class="content">
-			<form action="${pageContext.request.contextPath}/dishes/add" method="post" enctype="multipart/form-data">
+			<form action="${pageContext.request.contextPath}/DishesServlet?method=save" method="post" enctype="multipart/form-data">
 			<div class="box box-primary">
 				<div class="box-header with-border">
 					<h3 class="box-title">添加菜品</h3>
@@ -135,9 +135,10 @@
 							<div class="col-md-4 data text">
 								<select class="form-control" name="dishesTypeId">
 									<option>---请选择---</option>
-								<c:forEach items="${typelist }" var="t">	
-									<option  value="${t.id }">${t.typeName}</option>
-								</c:forEach>	
+									<option>option 2</option>
+									<option>option 3</option>
+									<option>option 4</option>
+									<option>option 5</option>
 								</select>
 							</div>
 							<div class="col-md-2 title">上传图片</div>

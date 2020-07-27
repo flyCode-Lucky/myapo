@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.dao.DishesTypeDao">
+	
+	<select id="findall" resultType="com.sy.pojo.DishesType">
+		SELECT * FROM dishestype where status=1
+	</select>
+	
+	<update id="update">
+		update dishestype set typeName=#{typeName} where id=#{id};
+	</update>
+	
+	<insert id="add">
+		insert  into dishestype (typeName, status) values (#{typeName},1)
+	</insert>
+	
+
+</mapper>

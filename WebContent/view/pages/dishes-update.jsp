@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html;charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <!-- 页面meta -->
-<meta charset="utf-8">
+<meta http-equive="content-type"content="text/html;charset=utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>阿婆私房菜- 菜品管理</title>
+<title>阿婆私房菜- 修改菜品</title>
 <meta name="description" content="阿婆私房菜">
 <meta name="keywords" content="阿婆私房菜">
 
@@ -79,7 +79,7 @@
 			<!-- 内容头部 -->
 			<section class="content-header">
 			<h1>
-				菜品管理 <small>添加菜品</small>
+				菜品管理 <small>修改菜品</small>
 			</h1>
 			<ol class="breadcrumb">
 				<li><a
@@ -91,11 +91,10 @@
 			</section>
 			<!-- 内容头部 /-->
 
+		<form action="${pageContext.request.contextPath}/DishesServlet?method=save" method="post" enctype="multipart/form-data">
 			<!-- 正文区域 -->
 			<section class="content">
-			<form action="${pageContext.request.contextPath}/dishes/update" method="post" enctype="multipart/form-data">
-				<input type="hidden" name="id" value="${dishes.id }"/>	
-				<input type="hidden" name="rpic" value="${dishes.pic }"/>
+			
 			<div class="box box-primary">
 				<div class="box-header with-border">
 					<h3 class="box-title">修改菜品</h3>
@@ -110,20 +109,18 @@
 							<div class="col-md-2 title">菜品名称</div>
 							<div class="col-md-4 data text">
 								<input type="text" name="dishesName" class="form-control" placeholder="请输入菜品名称"
-									value="${dishes.dishesName }">
-									
+									value="">
 							</div>
 							<div class="col-md-2 title">原料</div>
 							<div class="col-md-4 data text">
 								<input type="text" name="material" class="form-control" placeholder="请输入原料"
-									value="${dishes.material }">
+									value="">
 							</div>
 							<div class="col-md-2 title">市场价格</div>
 							<div class="col-md-4 data text">
 								<div class="input-group">
 									<span class="input-group-addon">¥</span> 
-									<input type="text" name="marketPrice"
-									 placeholder="请输入市场价格" class="form-control" value="${dishes.marketPrice }"> 
+									<input type="text" name="marketPrice" placeholder="请输入市场价格" class="form-control"> 
 									<span class="input-group-addon">.00</span>
 								</div>
 							</div>
@@ -131,8 +128,7 @@
 							<div class="col-md-4 data text">
 								<div class="input-group">
 									<span class="input-group-addon">¥</span> 
-									<input type="text" name="vipPrice" class="form-control" 
-									placeholder="请输入会员价格" value="${dishes.vipPrice }"> 
+									<input type="text" name="vipPrice" class="form-control" placeholder="请输入会员价格"> 
 									<span class="input-group-addon">.00</span>
 								</div>
 							</div>
@@ -140,28 +136,19 @@
 							<div class="col-md-4 data text">
 								<select class="form-control" name="dishesTypeId">
 									<option>---请选择---</option>
-								<c:forEach items="${types }" var="type">
-									<option value="${type.id }"  
-										<c:if  test="${dishes.dishesTypeId == type.id }">
-											selected
-										</c:if>
-									>
-										${type.typeName }
-									</option>
-								</c:forEach>	
+									<c:forEach items="${typeList}" var="type">
+									<option value="${type.id }">${type.typeName }</option>
+									</c:forEach>
 								</select>
 							</div>
 							<div class="col-md-2 title">上传图片</div>
 							<div class="col-md-4 data text">
-							<!-- 特殊：图片的name和数据库的pic没有直接关系 -->
 								<input type="file" name="uploadpic" id="exampleInputFile">
 								<p class="help-block"></p>
 							</div>
 							<div class="col-md-2 title rowHeight2x">说明</div>
 							<div class="col-md-10 data rowHeight2x">
-								<textarea name="desc" class="form-control"  rows="3" placeholder="请输入菜品描述">
-									${dishes.desc }
-								</textarea>
+								<textarea name="desc" class="form-control"  rows="3" placeholder="请输入菜品描述"></textarea>
 							</div>
 						</div>
 					</div>
@@ -174,10 +161,10 @@
 							onclick="history.back(-1);">返回</button>
 					</div>
 					<!--工具栏/-->
-					</form>
+					
 			</section>
 			<!-- 正文区域 /-->
-
+		</form>
 		</div>
 		</div>
 		<!-- 内容区域 /-->
@@ -191,8 +178,7 @@
 			href="http://sybcloud.com">研究院研发部</a>.
 		</strong> All rights reserved. </footer>
 		<!-- 底部导航 /-->
-
-
+	
 	<script
 		src="${pageContext.request.contextPath}/view/plugins/jQuery/jquery-2.2.3.min.js"></script>
 	<script

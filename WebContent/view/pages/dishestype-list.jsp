@@ -128,17 +128,16 @@
 									</tr>
 								</thead>
 								<tbody>
-							<c:forEach items="${types }" var="type"  >
+								<c:forEach items="${types}" var="type">
 									<tr>
-										<td class="text-center">
-										<input class="ids" type="checkbox" value="${type.id }"></td>
-										<td class="text-center">${type.id }</td>
-										<td class="text-center">${type.typeName }</td>
+										<td class="text-center"><input class="ids" type="checkbox" value="${type.id}"></td>
+										<td class="text-center">${type.id}</td>
+										<td class="text-center">${type.typeName}</td>
 										<td class="text-center">
 											<button type="button" class="btn bg-olive btn-xs btnupdate">修改</button>
 										</td>
 									</tr>
-							</c:forEach>
+								</c:forEach>
 								</tbody>
 							</table>
 							<!--数据列表/-->
@@ -323,13 +322,30 @@
 				$(this).data("clicks", !clicks);
 			});
 			
+			
+			
+			
 			//显示添加弹出层
-			$("#btnsave").click(function(){
-				//显示对话框
+			$("#btnsave").click(function(){				
 				$("#myModal").show();
 				$("#title").html("添加");
 				$("#btnType").html("添加");
+				$("#typeName").val(" ");
+				
 			});
+			
+			//删除
+			$("#btndel").click(function(){				
+				var ids="";
+				$(".ids:checkbox:checked").each(function(){					
+					ids+=$(this).val()+",";
+				});
+				alert(ids);
+				
+				
+			});
+			
+			
 			var  id="";
 			//显示修改弹出层
 			$(".btnupdate").click(function(){
@@ -337,34 +353,28 @@
 				$("#myModal").show();
 				$("#title").html("修改");
 				$("#btnType").html("修改");
-				//获取id&typeName
+				//获取id和typeName
 				id=$(this).parents("tr").children("td").eq(1).html();
-				var  typeName=$(this).parents("tr").children("td").eq(2).html();
+				var typeName=$(this).parents("tr").children("td").eq(2).html();
 				$("#typeName").val(typeName);
 			});
 			
 			//提交数据到后台
 			$("#btnType").click(function(){
-				var  type = $(this).html();
-				if(type == "添加"){
-					//添加事件
+				var type=$(this).html();
+				
+				if(type=="添加"){
+					//添加事件			
 					var  typeName=$("#typeName").val();
 					window.location.href="${pageContext.request.contextPath}/type/add?typeName="+typeName;
 				}else{
-					//修改事件
+					//修改事件		
 					var  typeName=$("#typeName").val();
 					window.location.href="${pageContext.request.contextPath}/type/update?typeName="+typeName+"&id="+id;
 				}
+				
 			});
-			//删除事件btndel
-			$("#btndel").click(function(){
-				var ids="";
-				$(".ids:checkbox:checked").each(function(){
-					ids+=$(this).val()+",";
-				});
-				ids=ids.substring(0,ids.length-1);
-				window.location.href="${pageContext.request.contextPath}/type/delete?ids="+ids;	
-			});
+			
 			//关闭弹出层
 			$(".modalClose").click(function(){
 				$("#typeName").val();

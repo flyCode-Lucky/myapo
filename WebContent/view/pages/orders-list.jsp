@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -99,7 +98,7 @@
 						<h3 class="box-title">订单查询</h3>
 					</div>
 					<div class="box-tools text-center">
-						<form action="${pageContext.request.contextPath}/orders/findall2" method="post">
+						<form action="${pageContext.request.contextPath}/" method="post">
 							<div class="tab-pane active">
 								<div class="row data-type">
 									<div class="col-md-12"></div>
@@ -107,12 +106,12 @@
 										<div class="col-md-1 title">按用户名查询</div>
 										<div class="col-md-2 data text">
 											<input type="text" name="userName" class="form-control"
-												placeholder="请输入用户名" value="${sessionScope.userName }">
+												placeholder="请输入用户名" value="">
 										</div>
 										<div class="col-md-1 title">按菜品名称查询</div>
 										<div class="col-md-2 data text">
 											<input type="text" name="dishesName" class="form-control"
-												placeholder="请输入菜品名称" value="${sessionScope.dishesName }">
+												placeholder="请输入菜品名称" value="">
 										</div>
 										<div class="col-md-1 title">按销售日期查询</div>
 										<div class="col-md-3 data">
@@ -121,7 +120,7 @@
 													<i class="fa fa-calendar"></i>
 												</div>
 												<input type="text" name="orderTime"
-													class="form-control pull-right" id="datepicker"  value="${sessionScope.orderTime }">
+													class="form-control pull-right" id="datepicker">
 											</div>
 										</div>
 										<div class="col-md-2 data">
@@ -154,57 +153,25 @@
 								</tr>
 							</thead>
 							<tbody>
-							<c:forEach items="${orders}"  var="orders">
 								<tr>
 									<td class="text-center"><input name="ids" class="ids"
-											type="checkbox" value="${orders.id }"></td>
-									<td class="text-center">${orders.id }</td>
-									<td class="text-center">${orders.users.userName}</td>
-									<td class="text-center">${orders.users.phone}</td>
-									<td class="text-center">${orders.users.address}</td>
-									<td class="text-center">${orders.dishesName }</td>
-									<td class="text-center">${orders.number }</td>
-									<td class="text-center">${orders.price }</td>
-									<td class="text-center">${orders.numPrice }</td>
+											type="checkbox" value=""></td>
+									<td class="text-center">1</td>
+									<td class="text-center">2</td>
+									<td class="text-center">3</td>
+									<td class="text-center">4</td>
+									<td class="text-center">5</td>
+									<td class="text-center">6</td>
+									<td class="text-center">7</td>
+									<td class="text-center">8</td>
+									<td class="text-center">9</td>
+									<td class="text-center">10</td>
 									<td class="text-center">
-										<fmt:formatDate value="${orders.orderTime }" pattern="yyyy-MM-dd" />
-									</td>
-									<td class="text-center">
-										<c:if  test="${orders.isDelivery == 0 }">
-											<span style="color:#10101b">不派送</span>
-										</c:if>
-										<c:if  test="${orders.isDelivery == 1 }">
-											<span style="color:#ff0000">派送</span>
-										</c:if>
-									</td>
-									<td class="text-center">
-										<c:if  test="${orders.status == 0 }">
-											<span style="color:#10101b">取消</span>
-										</c:if>
-										<c:if  test="${orders.status == 1 }">
-												<span style="color:#ff0000">确认</span>
-										</c:if>
-										 <c:if  test="${orders.status == 2 }">
-											<button type="button" class="btn bg-olive  btn-xs bg-olive" onclick="location.href='OrdersServlet.do?method=update&status=1&id=${orders.id}'">确认</button>
-											<button type="button" class="btn bg-olive btn-xs bg-maroon" onclick="location.href='OrdersServlet.do?method=update&status=0&id=${orders.id}'">取消</button>
-										</c:if>
+										<button type="button" class="btn bg-olive  btn-xs bg-olive">确认</button>
+										<button type="button" class="btn bg-olive btn-xs bg-maroon">修改</button>
 									</td>
 							   </tr>
-							</c:forEach>	
-							<!-- 分页数据 -->
-							<tr>
-									<td></td>
-									<td class="text-center" colspan="11">
-										<a href="${pageContext.request.contextPath}/orders/findall2?pageNo=1">首页</a>
-										<c:if  test="${pm.pageNo > 1 }">
-											<a href="${pageContext.request.contextPath}/orders/findall2?pageNo=${pm.pageNo - 1}">上一页</a>
-										</c:if>
-										<c:if  test="${pm.pageNo < pm.totalpage }">
-											<a href="${pageContext.request.contextPath}/orders/findall2?pageNo=${pm.pageNo + 1}">下一页</a>
-										</c:if>
-										<a href="${pageContext.request.contextPath}/orders/findall2?pageNo=${pm.totalpage}">尾页</a>
-									</td>
-							</tr>	
+								
 							</tbody>
 						</table>
 						<!--数据列表/-->
