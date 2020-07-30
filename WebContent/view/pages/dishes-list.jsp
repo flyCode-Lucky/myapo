@@ -135,29 +135,28 @@
 									</tr>
 								</thead>
 								<tbody>
-								<c:forEach  items="${dishes }"  var="dishe">
+								<c:forEach  items="${dishes }"  var="d">
 									<tr>
 										<td class="text-center" style="line-height: 60px;">
-											<input name="ids" class="ids" type="checkbox" value="${dishe.id }">
+											<input name="ids" class="ids" type="checkbox" value="${d.id }">
 										</td>
-										<td class="text-center" style="line-height: 60px;">${dishe.id }</td>
-										<td class="text-center" style="line-height: 60px;">${dishe.dishesName }</td>
+										<td class="text-center" style="line-height: 60px;">${d.id }</td>
+										<td class="text-center" style="line-height: 60px;">${d.dishesName }</td>
 										<td class="text-center">
-											<img src="${pageContext.request.contextPath}/${dishe.pic}" width="60" height="60"/>
+											<img src="${pageContext.request.contextPath}/${d.pic}" width="60" height="60"/>
 										</td>
-										<td class="text-center" style="line-height: 60px;">${dishe.material }</td>
-										<td class="text-center" style="line-height: 60px;">${dishe.dishesType.typeName }</td>
-										<td class="text-center" style="line-height: 60px;">￥${dishe.marketPrice }</td>
-										<td class="text-center" style="line-height: 60px;">￥${dishe.vipPrice }</td>
-										<td class="text-center" style="line-height: 60px;">${dishe.desc }</td>
+										<td class="text-center" style="line-height: 60px;">${d.material }</td>
+										<td class="text-center" style="line-height: 60px;">${d.dishesType.typeName }</td>
+										<td class="text-center" style="line-height: 60px;">￥${d.marketPrice }</td>
+										<td class="text-center" style="line-height: 60px;">￥${d.vipPrice }</td>
+										<td class="text-center" style="line-height: 60px;">${d.desc }</td>
 										<td class="text-center" style="line-height: 60px;">
 											<button type="button"
-											onclick="window.location.href='${pageContext.request.contextPath}/Dishes/update?id=${dishe.id}'"
+											onclick="window.location.href='${pageContext.request.contextPath}/Dishes/update?id=${d.id }'"
 											class="btn bg-olive btn-xs" >修改</button>
 										</td>
 									</tr>
 								</c:forEach>
-									
 								</tbody>
 							</table>
 							<!--数据列表/-->
@@ -291,17 +290,6 @@
 				checkboxClass : 'icheckbox_square-blue',
 				increaseArea : '20%'
 			});
-			
-			$("#btndel").click(function(){
-				var ids="";
-				$(".ids:checkbox:checked").each(function(){
-					ids+=$(this).val()+",";
-				});
-				//截取掉最后一个逗号
-				ids=ids.substring(0,ids.length-1);
-				window.location.href="${pageContext.request.contextPath}/Dishes/delete?ids="+ids;          
-			});	
-			
 			// 全选操作 
 			$("#selall").click(function() {
 				var clicks = $(this).is(':checked');

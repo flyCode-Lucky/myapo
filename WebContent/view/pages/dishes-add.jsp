@@ -109,6 +109,7 @@
 							<div class="col-md-4 data text">
 								<input type="text" name="dishesName" class="form-control" placeholder="请输入菜品名称"
 									value="">
+									
 							</div>
 							<div class="col-md-2 title">原料</div>
 							<div class="col-md-4 data text">
@@ -135,15 +136,16 @@
 							<div class="col-md-4 data text">
 								<select class="form-control" name="dishesTypeId">
 									<option>---请选择---</option>
-									<c:forEach items="${types}" var="type">
-										<option value="${type.id }">${type.typeName }</option>
-									</c:forEach>
-									
-									
+								<c:forEach items="${types }" var="type">
+									<option value="${type.id }">
+										${type.typeName }
+									</option>
+								</c:forEach>	
 								</select>
 							</div>
 							<div class="col-md-2 title">上传图片</div>
 							<div class="col-md-4 data text">
+							<!-- 特殊：图片的name和数据库的pic没有直接关系 -->
 								<input type="file" name="uploadpic" id="exampleInputFile">
 								<p class="help-block"></p>
 							</div>

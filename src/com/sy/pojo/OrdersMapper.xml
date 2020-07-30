@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sy.dao.OrdersDao">
+
+		<select id="findall" resultMap="getmap">
+			select o.id oid ,o.*,u.* from orders o,users u where o.userId=u.id 
+				and u.userName like concat('%',#{userName},'%')
+				and o.dishesName like concat('%',#{dishesName},'%')
+				and o.orderTime like concat('%',#{orderTime},'%')
+				limit #{pagestart},#{pagesize};
+		</select>
+		
+		<resultMap type="com.sy.pojo.Orders" id="getmap" autoMapping="true">
+			<id property="id" column="oid"/>
+			<association property="users" column="userId" 
+						javaType="com.sy.pojo.Users" autoMapping="true">
+			</association>
+		</resultMap>
+		
+		<select id="gettotal" resultType="int">
+			select count(*) from orders o,users u where o.userId=u.id
+			and u.userName like concat('%',#{userName},'%')
+			and o.dishesName like concat('%',#{dishesName},'%')
+			and o.orderTime like concat('%',#{orderTime},'%')
+		</select>
+</mapper>

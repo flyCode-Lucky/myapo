@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.dao.DishesDao">
+	<select id="findall" resultMap="getmap">
+		select  d.id did,d.*,t.*  from  dishes  d,dishestype  t where  d.dishesTypeId=t.id;
+	</select>
+	<resultMap type="com.sy.pojo.Dishes" id="getmap" autoMapping="true">
+		<id property="id" column="did"/>
+		<association property="dishesType" column="dishesTypeId" 
+					javaType="com.sy.pojo.DishesType" autoMapping="true">
+		</association>
+	</resultMap>
+	
+	<insert id="add">
+		insert into  dishes values(0,#{dishesName},#{material},#{marketPrice},#{vipPrice},#{dishesTypeId},#{pic},#{desc},1);
+	</insert>
+	
+	<update id="update">
+		update dishes set dishesName=#{dishesName},material=#{material},marketPrice=#{marketPrice},vipPrice=#{vipPrice},dishesTypeId=#{dishesTypeId},pic=#{pic}, `desc`=#{desc} where id=#{id};
+	</update>
+	
+	<delete id="delete">
+		delete from dishes where id=#{id};
+	</delete>
+	
+	<select id="findbyid" resultType="com.sy.pojo.Dishes">
+		select * from dishes where id=#{id};
+	</select>
+	
+	
+</mapper> 

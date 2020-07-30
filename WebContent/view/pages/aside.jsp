@@ -44,7 +44,7 @@
 				</a>
 				<ul class="treeview-menu">
 					<li id="admin-login">
-						<a href="${pageContext.request.contextPath}/view/pages/orders-list.jsp"> 
+						<a href="${pageContext.request.contextPath}/orders/findall"> 
 							<i class="fa fa-circle-o"></i>订单查询
 						</a>
 					</li>

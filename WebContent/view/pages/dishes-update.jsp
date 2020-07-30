@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html;charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <!-- 页面meta -->
-<meta http-equive="content-type"content="text/html;charset=utf-8"/>
+<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>阿婆私房菜- 修改菜品</title>
+<title>阿婆私房菜- 菜品管理</title>
 <meta name="description" content="阿婆私房菜">
 <meta name="keywords" content="阿婆私房菜">
 
@@ -79,7 +79,7 @@
 			<!-- 内容头部 -->
 			<section class="content-header">
 			<h1>
-				菜品管理 <small>修改菜品</small>
+				菜品管理 <small>添加菜品</small>
 			</h1>
 			<ol class="breadcrumb">
 				<li><a
@@ -91,9 +91,9 @@
 			</section>
 			<!-- 内容头部 /-->
 
-		<form action="${pageContext.request.contextPath}/Dishes/update" method="post" enctype="multipart/form-data">
 			<!-- 正文区域 -->
 			<section class="content">
+			<form action="${pageContext.request.contextPath}/Dishes/update" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="id" value="${dishes.id }"/>	
 				<input type="hidden" name="rpic" value="${dishes.pic }"/>
 			<div class="box box-primary">
@@ -174,10 +174,10 @@
 							onclick="history.back(-1);">返回</button>
 					</div>
 					<!--工具栏/-->
-					
+					</form>
 			</section>
 			<!-- 正文区域 /-->
-		</form>
+
 		</div>
 		</div>
 		<!-- 内容区域 /-->
@@ -191,7 +191,8 @@
 			href="http://sybcloud.com">研究院研发部</a>.
 		</strong> All rights reserved. </footer>
 		<!-- 底部导航 /-->
-	
+
+
 	<script
 		src="${pageContext.request.contextPath}/view/plugins/jQuery/jquery-2.2.3.min.js"></script>
 	<script
