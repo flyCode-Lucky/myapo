@@ -103,7 +103,7 @@
 								<div class="form-group form-inline">
 									<div class="btn-group">
 										<button type="button" id="btnsave" 
-										onclick="window.location.href='${pageContext.request.contextPath}/dishes/showAdd'"
+										onclick="window.location.href='${pageContext.request.contextPath}/Dishes/add'"
 										class="btn btn-default" title="新建">
 											<i class="fa fa-file-o"></i> 新建
 										</button>
@@ -135,64 +135,29 @@
 									</tr>
 								</thead>
 								<tbody>
+								<c:forEach  items="${dishes }"  var="dishe">
 									<tr>
 										<td class="text-center" style="line-height: 60px;">
-											<input name="ids" class="ids" type="checkbox" value="">
+											<input name="ids" class="ids" type="checkbox" value="${dishe.id }">
 										</td>
-										<td class="text-center" style="line-height: 60px;">1</td>
-										<td class="text-center" style="line-height: 60px;">粉蒸肉</td>
+										<td class="text-center" style="line-height: 60px;">${dishe.id }</td>
+										<td class="text-center" style="line-height: 60px;">${dishe.dishesName }</td>
 										<td class="text-center">
-											<img src="${pageContext.request.contextPath}/images/fzr.jpg" width="60" height="60"/>
+											<img src="${pageContext.request.contextPath}/${dishe.pic}" width="60" height="60"/>
 										</td>
-										<td class="text-center" style="line-height: 60px;">米粉、五花肉</td>
-										<td class="text-center" style="line-height: 60px;">蒸菜</td>
-										<td class="text-center" style="line-height: 60px;">￥26</td>
-										<td class="text-center" style="line-height: 60px;">￥23</td>
-										<td class="text-center" style="line-height: 60px;">肥瘦相间，多吃不腻</td>
+										<td class="text-center" style="line-height: 60px;">${dishe.material }</td>
+										<td class="text-center" style="line-height: 60px;">${dishe.dishesType.typeName }</td>
+										<td class="text-center" style="line-height: 60px;">￥${dishe.marketPrice }</td>
+										<td class="text-center" style="line-height: 60px;">￥${dishe.vipPrice }</td>
+										<td class="text-center" style="line-height: 60px;">${dishe.desc }</td>
 										<td class="text-center" style="line-height: 60px;">
 											<button type="button"
-											onclick="window.location.href='${pageContext.request.contextPath}/dishes/showUpdate?id='"+${dishes.id}
+											onclick="window.location.href='${pageContext.request.contextPath}/Dishes/update?id=${dishe.id}'"
 											class="btn bg-olive btn-xs" >修改</button>
 										</td>
 									</tr>
-									<tr>
-										<td class="text-center" style="line-height: 60px;">
-											<input name="ids" class="ids" type="checkbox" value="">
-										</td>
-										<td class="text-center" style="line-height: 60px;">2</td>
-										<td class="text-center" style="line-height: 60px;">黄瓜拉皮</td>
-										<td class="text-center">
-											<img src="${pageContext.request.contextPath}/images/hglp.jpg" width="60" height="60"/>
-										</td>
-										<td class="text-center" style="line-height: 60px;">黄瓜、拉皮</td>
-										<td class="text-center" style="line-height: 60px;">凉拌菜</td>
-										<td class="text-center" style="line-height: 60px;">￥8</td>
-										<td class="text-center" style="line-height: 60px;">￥6</td>
-										<td class="text-center" style="line-height: 60px;">清凉爽口</td>
-										<td class="text-center" style="line-height: 60px;">
-											<button type="button" class="btn bg-olive btn-xs" >修改</button>
-										</td>
-									</tr>
-									<tr>
-										<td class="text-center" style="line-height: 60px;">
-											<input name="ids" class="ids" type="checkbox" value="">
-										</td>
-										<td class="text-center" style="line-height: 60px;">3</td>
-										<td class="text-center" style="line-height: 60px;">水煮鱼</td>
-										<td class="text-center">
-											<img src="${pageContext.request.contextPath}/images/szy.jpg" width="60" height="60"/>
-										</td>
-										<td class="text-center" style="line-height: 60px;">鱼、辣椒</td>
-										<td class="text-center" style="line-height: 60px;">川菜</td>
-										<td class="text-center" style="line-height: 60px;">￥38</td>
-										<td class="text-center" style="line-height: 60px;">￥32</td>
-										<td class="text-center" style="line-height: 60px;">鲜、香、麻、辣</td>
-										<td class="text-center" style="line-height: 60px;">
-											<button type="button"
-											onclick="window.location.href='${pageContext.request.contextPath}/dishes/showUpdate?id='"+${dishes.id}
-											class="btn bg-olive btn-xs" >修改</button>
-										</td>
-									</tr>
+								</c:forEach>
+									
 								</tbody>
 							</table>
 							<!--数据列表/-->
@@ -326,6 +291,17 @@
 				checkboxClass : 'icheckbox_square-blue',
 				increaseArea : '20%'
 			});
+			
+			$("#btndel").click(function(){
+				var ids="";
+				$(".ids:checkbox:checked").each(function(){
+					ids+=$(this).val()+",";
+				});
+				//截取掉最后一个逗号
+				ids=ids.substring(0,ids.length-1);
+				window.location.href="${pageContext.request.contextPath}/Dishes/delete?ids="+ids;          
+			});	
+			
 			// 全选操作 
 			$("#selall").click(function() {
 				var clicks = $(this).is(':checked');

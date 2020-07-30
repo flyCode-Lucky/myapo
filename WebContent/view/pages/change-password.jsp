@@ -91,8 +91,7 @@
 			</section>
 			<!-- 内容头部 /-->
 
-			<form action="${pageContext.request.contextPath}/admin/updatePassword" method=post">
-			
+			<form action="${pageContext.request.contextPath}/admin/update" method="post">
 				<!-- 正文区域 -->
 				<section class="content">
 
@@ -108,26 +107,23 @@
 						<!--label显示的内容-->
 						<div class="tab-pane active" id="tab-label">
 							<div class="row data-type">
-								<div class="col-md-3 title">用户名</div>
-								<div class="col-md-9 data">
-									<input type="text" id="loginName" name="loginName" class="form-control"
-										placeholder="请输入用户名" value="">
-								</div>
-								<div class="col-md-3 title">原密码</div>
+								<div class="col-md-3 title">原始密码</div>
 								<div class="col-md-9 data">
 									<input type="password" id="password" name="password" class="form-control"
-										placeholder="请输入原密码" value="">
+										placeholder="请输入密码" value="">
 								</div>
 								<div class="col-md-3 title">新密码</div>
 								<div class="col-md-9 data">
 									<input type="password" id="newPassword" name="newPassword" class="form-control"
 										placeholder="请输入新密码" value="">
 								</div>
-								
-									<p style="color:red;font-size: 20px;text-align: center;">${msg1}</p>
-							
-								
-							</div>							
+								<div class="col-md-3 title">确认新密码</div>
+								<div class="col-md-9 data">
+									<input type="password" id="rpassword" name="rpassword" class="form-control"
+										placeholder="请输入新密码" value="">
+								</div>
+							</div>
+							<p style="color:red;font-size: 20px;text-align: center;">${msg1}</p>
 						</div>
 						</div>
 						

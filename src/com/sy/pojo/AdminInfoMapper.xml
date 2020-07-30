@@ -7,7 +7,8 @@
 		SELECT * from admininfo WHERE loginName = #{loginName} and password = #{password};
 	</select>
 	
-	<update id="updatePassword">
-		update admininfo set password=#{newPassword} where loginName=#{loginName} and password=#{password};
+	<update id="update">
+		update admininfo set password=#{newPassword} where loginName=#{loginName} and password = #{password};
 	</update>
+	
 </mapper>

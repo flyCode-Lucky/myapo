@@ -91,10 +91,11 @@
 			</section>
 			<!-- 内容头部 /-->
 
-		<form action="${pageContext.request.contextPath}/DishesServlet?method=save" method="post" enctype="multipart/form-data">
+		<form action="${pageContext.request.contextPath}/Dishes/update" method="post" enctype="multipart/form-data">
 			<!-- 正文区域 -->
 			<section class="content">
-			
+				<input type="hidden" name="id" value="${dishes.id }"/>	
+				<input type="hidden" name="rpic" value="${dishes.pic }"/>
 			<div class="box box-primary">
 				<div class="box-header with-border">
 					<h3 class="box-title">修改菜品</h3>
@@ -109,18 +110,20 @@
 							<div class="col-md-2 title">菜品名称</div>
 							<div class="col-md-4 data text">
 								<input type="text" name="dishesName" class="form-control" placeholder="请输入菜品名称"
-									value="">
+									value="${dishes.dishesName }">
+									
 							</div>
 							<div class="col-md-2 title">原料</div>
 							<div class="col-md-4 data text">
 								<input type="text" name="material" class="form-control" placeholder="请输入原料"
-									value="">
+									value="${dishes.material }">
 							</div>
 							<div class="col-md-2 title">市场价格</div>
 							<div class="col-md-4 data text">
 								<div class="input-group">
 									<span class="input-group-addon">¥</span> 
-									<input type="text" name="marketPrice" placeholder="请输入市场价格" class="form-control"> 
+									<input type="text" name="marketPrice"
+									 placeholder="请输入市场价格" class="form-control" value="${dishes.marketPrice }"> 
 									<span class="input-group-addon">.00</span>
 								</div>
 							</div>
@@ -128,7 +131,8 @@
 							<div class="col-md-4 data text">
 								<div class="input-group">
 									<span class="input-group-addon">¥</span> 
-									<input type="text" name="vipPrice" class="form-control" placeholder="请输入会员价格"> 
+									<input type="text" name="vipPrice" class="form-control" 
+									placeholder="请输入会员价格" value="${dishes.vipPrice }"> 
 									<span class="input-group-addon">.00</span>
 								</div>
 							</div>
@@ -136,19 +140,28 @@
 							<div class="col-md-4 data text">
 								<select class="form-control" name="dishesTypeId">
 									<option>---请选择---</option>
-									<c:forEach items="${typeList}" var="type">
-									<option value="${type.id }">${type.typeName }</option>
-									</c:forEach>
+								<c:forEach items="${types }" var="type">
+									<option value="${type.id }"  
+										<c:if  test="${dishes.dishesTypeId == type.id }">
+											selected
+										</c:if>
+									>
+										${type.typeName }
+									</option>
+								</c:forEach>	
 								</select>
 							</div>
 							<div class="col-md-2 title">上传图片</div>
 							<div class="col-md-4 data text">
+							<!-- 特殊：图片的name和数据库的pic没有直接关系 -->
 								<input type="file" name="uploadpic" id="exampleInputFile">
 								<p class="help-block"></p>
 							</div>
 							<div class="col-md-2 title rowHeight2x">说明</div>
 							<div class="col-md-10 data rowHeight2x">
-								<textarea name="desc" class="form-control"  rows="3" placeholder="请输入菜品描述"></textarea>
+								<textarea name="desc" class="form-control"  rows="3" placeholder="请输入菜品描述">
+									${dishes.desc }
+								</textarea>
 							</div>
 						</div>
 					</div>

@@ -2,8 +2,6 @@ package com.sy.controller;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.sy.pojo.DishesType;
 import com.sy.service.DishesTypeS;
 
+import sun.print.resources.serviceui;
+
 @Controller
-@RequestMapping("/type")
+@RequestMapping("/DishesType")
 public class DishesTypeC {
 
 	@Autowired
@@ -21,30 +21,37 @@ public class DishesTypeC {
 	
 	@RequestMapping("/findall")
 	public String findall(Model m) {
-		List<DishesType> types = ser.findall();
+		List<DishesType> types=ser.findall();
 		m.addAttribute("types", types);
-		//System.out.println(types);
 		return "dishestype-list";
+	}
+	
+	@RequestMapping("/update")
+	public String update(DishesType type) {
+		ser.update(type);;
+		return "redirect:/DishesType/findall";
 	}
 	
 	@RequestMapping("/add")
 	public String add(DishesType type) {
 		ser.add(type);
-		return "redirect:/type/findall";
-	}
-	
-	@RequestMapping("/update")
-	public String update(DishesType type) {
-		ser.update(type);
-		return "redirect:/type/findall";
+		return "redirect:/DishesType/findall";
 	}
 	
 	@RequestMapping("/delete")
 	public String delete(String ids) {
 		String sid[]=ids.split(",");
-		for(String id:sid){
+		for(String id:sid) {
 			ser.delete(Integer.parseInt(id));
-		}	
-		return "redirect:/type/findall";
+		}
+		
+		return "redirect:/DishesType/findall";
 	}
+	
+	
+	
+	
+	
+	
+	
 }

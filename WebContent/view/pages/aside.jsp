@@ -24,11 +24,11 @@
 				href="${pageContext.request.contextPath}/view/pages/main.jsp"><i
 					class="fa fa-dashboard"></i> <span>首页</span></a></li>
 			<li class="treeview"><a
-				href="${pageContext.request.contextPath}/DishesServlet?method=findAll">
+				href="${pageContext.request.contextPath}/Dishes/findall">
 					<i class="fa fa-sticky-note-o"></i><span>菜品管理</span>
 			</a></li>
 			<li class="treeview"><a
-				href="${pageContext.request.contextPath}/type/findall">
+				href="${pageContext.request.contextPath}/DishesType/findall">
 					<i class="fa  fa-cubes"></i><span>菜品类别管理</span>
 				</a>
 			</li>
@@ -44,7 +44,7 @@
 				</a>
 				<ul class="treeview-menu">
 					<li id="admin-login">
-						<a href="${pageContext.request.contextPath}/orders/findall"> 
+						<a href="${pageContext.request.contextPath}/view/pages/orders-list.jsp"> 
 							<i class="fa fa-circle-o"></i>订单查询
 						</a>
 					</li>

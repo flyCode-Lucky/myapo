@@ -138,6 +138,7 @@
 										</td>
 									</tr>
 								</c:forEach>
+									
 								</tbody>
 							</table>
 							<!--数据列表/-->
@@ -322,11 +323,8 @@
 				$(this).data("clicks", !clicks);
 			});
 			
-			
-			
-			
 			//显示添加弹出层
-			$("#btnsave").click(function(){				
+			$("#btnsave").click(function(){
 				$("#myModal").show();
 				$("#title").html("添加");
 				$("#btnType").html("添加");
@@ -334,47 +332,44 @@
 				
 			});
 			
-			//删除
-			$("#btndel").click(function(){				
-				var ids="";
-				$(".ids:checkbox:checked").each(function(){					
-					ids+=$(this).val()+",";
-				});
-				//截取字符串，截取掉最后一个逗号
-				ids=ids.substring(0,ids.length-1);
-				window.location.href="${pageContext.request.contextPath}/type/delete?ids="+ids;
-				
-			});
-			
-			
-			var  id="";
 			//显示修改弹出层
 			$(".btnupdate").click(function(){
-				//显示对话框
 				$("#myModal").show();
 				$("#title").html("修改");
 				$("#btnType").html("修改");
-				//获取id和typeName
+				//$("#typeName").val(" ");
 				id=$(this).parents("tr").children("td").eq(1).html();
 				var typeName=$(this).parents("tr").children("td").eq(2).html();
 				$("#typeName").val(typeName);
+		
 			});
 			
-			//提交数据到后台
+			//保存与修改
 			$("#btnType").click(function(){
 				var type=$(this).html();
 				
 				if(type=="添加"){
-					//添加事件			
-					var  typeName=$("#typeName").val();
-					window.location.href="${pageContext.request.contextPath}/type/add?typeName="+typeName;
+					var typeName=$("#typeName").val();
+					window.location.href="${pageContext.request.contextPath}/DishesType/add?typeName="+typeName;
+
+					
 				}else{
-					//修改事件		
-					var  typeName=$("#typeName").val();
-					window.location.href="${pageContext.request.contextPath}/type/update?typeName="+typeName+"&id="+id;
+					//修改
+					var typeName=$("#typeName").val();
+					window.location.href="${pageContext.request.contextPath}/DishesType/update?typeName="+typeName+"&id="+id;          
 				}
-				
-			});
+			});		
+			
+			//删除（获取选中id）
+			$("#btndel").click(function(){
+				var ids="";
+				$(".ids:checkbox:checked").each(function(){
+					ids+=$(this).val()+",";
+				});
+				//截取掉最后一个逗号
+				ids=ids.substring(0,ids.length-1);
+				window.location.href="${pageContext.request.contextPath}/DishesType/delete?ids="+ids;          
+			});		
 			
 			//关闭弹出层
 			$(".modalClose").click(function(){
