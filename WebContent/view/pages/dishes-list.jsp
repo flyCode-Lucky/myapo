@@ -290,6 +290,17 @@
 				checkboxClass : 'icheckbox_square-blue',
 				increaseArea : '20%'
 			});
+			
+			//删除（获取选中id）
+			$("#btndel").click(function(){
+				var ids="";
+				$(".ids:checkbox:checked").each(function(){
+					ids+=$(this).val()+",";
+				});
+				//截取掉最后一个逗号
+				ids=ids.substring(0,ids.length-1);
+				window.location.href="${pageContext.request.contextPath}/Dishes/delete?ids="+ids;          
+			});	
 			// 全选操作 
 			$("#selall").click(function() {
 				var clicks = $(this).is(':checked');

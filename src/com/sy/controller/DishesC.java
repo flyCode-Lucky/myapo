@@ -29,14 +29,20 @@ public class DishesC {
 	private  DishesTypeS  ser2;
 	
 	@RequestMapping("/findall")
-	public  String  findall(Model  m) {
-		List<Dishes> dishes = ser.findall();
-		//System.out.println("大小："+dishes.size());
+	public  String  findall(Model  m,String  userId) {
+		List<Dishes> dishes = ser.findall();		
 		m.addAttribute("dishes", dishes);
-		return "dishes-list";
+		if(userId ==null) {
+			return "dishes-list";
+		}
+		return "web/pages/main";
+						
 	}
+	
+	
+	
 	@RequestMapping("/add")
-	public  String  add(Model  m) {//默认的get
+	public  String  add(Model  m) {
 		List<DishesType> types = ser2.findall();
 		m.addAttribute("types", types);
 		return "dishes-add";
@@ -79,5 +85,15 @@ public class DishesC {
 		ser.update(dishes);
 		
 		return "redirect:/dishes/findall";
+	}
+	
+	@RequestMapping("/delete")
+	public String delete(String ids) {
+		String sid[]=ids.split(",");
+		for(String id:sid) {
+			ser.delete(Integer.parseInt(id));
+		}
+		
+		return "redirect:/Dishes/findall";
 	}
 }

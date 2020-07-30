@@ -1,0 +1,98 @@
+*{
+    margin:0;
+    padding: 0;
+}
+
+#headermain{
+    width:1366px;
+    margin: 0 auto;
+}
+/*右上角导航*/
+#titleLinke{
+    width:43%;
+    height: 30px;
+    border:3px lightsalmon solid;
+    border-top: none;
+    position: relative;
+    right: -60%;
+    background-color: bisque;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+#titleLinke ul{
+    list-style:none;
+    margin-left: 1%;
+    overflow: hidden;
+}
+#titleLinke ul li{
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    height:30px;
+    line-height: 30px;
+    text-align: center;
+    color: dimgray;
+}
+#titleLinke ul li a{
+    text-decoration: none;
+    color: dimgray;
+}
+
+/*用户欢迎信息*/
+#userinfo{
+    position: absolute;
+    left:67%;
+    top:6%;
+    color: #f57209;
+    font-weight: 700;
+}
+
+/*菜单导航*/
+#navdiv{
+    border-bottom: 6px #f57209 solid;
+    overflow: hidden;
+}
+#logo{
+    position: relative;
+    width:300px;
+    height: 100px;
+    left: 30px;
+    float: left;
+}
+#logo img{
+    width:300px;
+    position: relative;
+    top: -4px;
+}
+
+#navLink{
+    width: 80%;
+    height: 40px;
+    float: left;
+    position: relative;
+    left:25%;
+  
+}
+#navLink ul{
+    list-style:none;
+    overflow: hidden;
+}
+#navLink ul li{
+    float: left;
+    width:120px;
+    margin-left: 15px;
+    height:40px;
+    line-height: 40px;
+    text-align: center;
+    border: 4px #f57209 solid;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background: linear-gradient(to left,#f59409,#efcb6a);
+    border-bottom: none;
+}
+#navLink ul li a{
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
+}

@@ -1,0 +1,22 @@
+*{
+    margin:0;
+    padding: 0;
+}
+
+#footmain{
+    width:1366px;
+    margin: 0 auto;
+    background-color: #fdebd5;
+    border-top: 3px lightsalmon solid;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+#footmain p{
+    padding-top:10px;
+    color: dimgray;
+}
+#footmain p a{
+    text-decoration: none;
+    color: dimgray;
+}
