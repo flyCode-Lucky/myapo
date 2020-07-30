@@ -30,7 +30,7 @@
 				</dl>
 				<p>
 					<a href="${pageContext.request.contextPath}/shop/shop?userId=${sessionScope.users.id}&dishesName=${d.dishesName}&price=${d.vipPrice}"> 
-						<img src="${pageContext.request.contextPath}/view/pages/web//img/shcar.png">
+					     <img src="${pageContext.request.contextPath}/view/pages/web//img/shcar.png">
 					</a>
 				</p>
 			</div>

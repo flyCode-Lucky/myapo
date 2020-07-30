@@ -57,7 +57,7 @@ public class DishesC {
 		dishes.setPic(fileName);
 		ser.add(dishes);
 		
-		return "redirect:/dishes/findall";
+		return "redirect:/Dishes/findall";
 	}
 	
 	@RequestMapping("/update")
@@ -84,7 +84,7 @@ public class DishesC {
 	
 		ser.update(dishes);
 		
-		return "redirect:/dishes/findall";
+		return "redirect:/Dishes/findall";
 	}
 	
 	@RequestMapping("/delete")

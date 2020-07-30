@@ -32,27 +32,33 @@
 				</tr>
 			</thead>
 			<tbody>
-			<c:forEach  items="${cars }" var="car">
+			<c:forEach items="${cars }" var="car">
+			
 				<tr>
-					<td><input type="checkbox" name="ids" class="ids" value="${car.id }">
-					</td>
+					<td><input type="checkbox" name="ids" class="ids" value="${car.id }"
+						onclick="checkValue()"></td>
 					<td>${car.dishesName }</td>
 					<td>${car.price }</td>
 					<td>${car.number }</td>
 					<td><a href="${pageContext.request.contextPath}/shop/delete?id=${car.id}&userId=${sessionScope.users.id}">取消</a></td>
 				</tr>
+				
 			</c:forEach>
+				
+				
+
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="5">小计：<span class="textsp">${j }</span>&nbsp;&nbsp;元&nbsp;&nbsp;&nbsp;&nbsp;
-						共：<span class="textsp">${i }</span>&nbsp;&nbsp;件
+					<td colspan="5">小计：<span class="textsp">96</span>&nbsp;&nbsp;元&nbsp;&nbsp;&nbsp;&nbsp;
+						共：<span class="textsp">4</span>&nbsp;&nbsp;件
 					</td>
 				</tr>
 				<tr>
-					<td colspan="5"><input type="button" id="btnok" value="全部提交"
-					  onclick="window.location.href='${pageContext.request.contextPath}/shop/add'"
-					>
+					<td colspan="5">
+						<input type="button" id="btnok" value="全部提交"
+						onclick="window.location.href='${pageContext.request.contextPath}/shop/addall'"
+						>
 						<input type="button" id="btreset" value="全部取消"></td>
 				</tr>
 			</tfoot>

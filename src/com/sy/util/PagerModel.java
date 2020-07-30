@@ -16,7 +16,14 @@ public class PagerModel<T> {
 	private String dishesName;
 	private String orderTime;
 	
+	private String userId="";
 	
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	public int getPagestart() {
 		return pagestart=(pageNo-1)*pagesize;
 	}
@@ -71,6 +78,7 @@ public class PagerModel<T> {
 	public void setOrderTime(String orderTime) {
 		this.orderTime = orderTime;
 	}
+	
 	
 			
 	

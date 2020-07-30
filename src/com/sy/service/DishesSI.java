@@ -15,7 +15,6 @@ public class DishesSI implements  DishesS{
 	private  DishesDao  dao;
 
 	public List<Dishes> findall() {
-		// TODO Auto-generated method stub
 		return dao.findall();
 	}
 

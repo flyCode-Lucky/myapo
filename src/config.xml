@@ -7,6 +7,7 @@
 			<mapper resource="./com/sy/pojo/DishesTypeMapper.xml"/>	
 			<mapper resource="./com/sy/pojo/DishesMapper.xml"/>		
 			<mapper resource="./com/sy/pojo/OrdersMapper.xml"/>	
-			<mapper resource="./com/sy/pojo/usersMapper.xml"/>			
+			<mapper resource="./com/sy/pojo/usersMapper.xml"/>	
+			<mapper resource="./com/sy/pojo/shopMapper.xml"/>		
 	</mappers>
 </configuration>

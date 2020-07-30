@@ -21,7 +21,7 @@ public class OrdersC {
 	private OrdersS ser;
 
 	@RequestMapping("/findall")
-	public String findall(Model m,PagerModel<Orders> pm ,HttpServletRequest request) {
+	public String findall(String userId,Model m,PagerModel<Orders> pm ,HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		
@@ -61,8 +61,19 @@ public class OrdersC {
 		session.setAttribute("orderTime", orderTime);
 		pm.setOrderTime(orderTime);
 		
-		pm= ser.findall(pm);
-		m.addAttribute("pm",pm);
-		return "orders-list";
+		if(userId==null) {
+			//后台
+			pm= ser.findall(pm);
+			m.addAttribute("pm",pm);
+			return "orders-list";
+		}else {
+			//前台
+			pm.setUserId(userId);
+			pm= ser.findall(pm);
+			m.addAttribute("pm",pm);
+			return "web/pages/queryOrders";
+		}
+		
+		
 	}
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sy.dao.ShopDao">
+		<!-- 先查，存在就+1，不在就新增 -->
+		<select id="find" resultType="com.sy.pojo.ShoppingCar">
+			select * from shoppingcar where userId=#{userId} and dishesName=#{dishesName};
+		</select>
+		
+		<insert id="add">
+			insert into shoppingcar values(0,#{userId},#{dishesName},1,#{price},now());
+		</insert>
+		
+		<update id="update">
+			update shoppingcar set number=number+1 where userId=#{userId} and dishesName=#{dishesName};
+		</update>
+		
+		<select id="find2" resultType="com.sy.pojo.ShoppingCar">
+			select * from shoppingcar where userId=#{userId};
+		</select>
+		
+		<!-- 取消按钮 -->
+		<delete id="delete">
+			delete from shoppingcar where id=#{id};
+		</delete>
+		
+		
+		
+</mapper>

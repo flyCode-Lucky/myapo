@@ -9,6 +9,7 @@
 				and u.userName like concat('%',#{userName},'%')
 				and o.dishesName like concat('%',#{dishesName},'%')
 				and o.orderTime like concat('%',#{orderTime},'%')
+				and o.userId like concat('%',#{userId},'%')
 				limit #{pagestart},#{pagesize};
 		</select>
 		
@@ -25,4 +26,22 @@
 			and o.dishesName like concat('%',#{dishesName},'%')
 			and o.orderTime like concat('%',#{orderTime},'%')
 		</select>
+		
+		
+		<delete id="delete">
+			delete from orders  where userId=#{userId};
+		
+		</delete>
+		
+		<insert id="add">		
+			insert into orders values(0,#{userId},#{dishesName},#{number},now(),1,1,#{price},#{numPrice});
+		</insert>
+		
+		
+		
+		
+		
+		
+		
+		
 </mapper>
